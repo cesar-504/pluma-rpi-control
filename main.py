@@ -1,13 +1,21 @@
 import json
+import config
+import  requests
+import auth
+r = requests.get(config.urlBase+'/api/users')
+print(config.urlBase)
+print(config.urlAccess)
+print(config.urlExit)
 
-#urlbase='pluma-api.herokuapp.com'
-urlBase='localhost:8000'
-urlAccess=urlBase + '/api/entries/access'
-urlExit=urlBase + '/api/entries/exit'
+login=False
+print('Login:')
+while(not login):
+    email=input('email: ')
+    password =input('contraseña: ')
+    login=auth.login(email,password)
 
-print(urlBase)
-print(urlAccess)
-print(urlExit)
+
+
 
 jsonAccess=json.dumps(
     {
